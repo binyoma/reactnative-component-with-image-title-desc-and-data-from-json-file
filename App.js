@@ -1,5 +1,5 @@
 
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList,  StyleSheet } from 'react-native';
 import Author from './src/components/Author';
 import authors from './src/data/tp.json';
 
@@ -10,13 +10,10 @@ const styles = StyleSheet.create({
 });
 const App=() =>{
   return (
-    <ScrollView style={styles.container}>
-       {authors.map((element, index) => {
-        return(
-          <Author title={element.title} index={index} img={element.img} desc={element.desc}></Author>
-          )
-      })}
-    </ScrollView>
+    <FlatList
+    data={authors}
+    renderItem={Author} 
+    keyExtractor={(item,index)=>index}/>
   );
 }
 
